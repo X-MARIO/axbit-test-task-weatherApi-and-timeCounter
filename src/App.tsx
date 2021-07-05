@@ -1,24 +1,26 @@
 import React from 'react';
-import { BrowserRouter, NavLink, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+
 import HomePage from './pages/HomePage';
 import CounterPage from './pages/CounterPage';
+import Navbar from './components/Navbar/Navbar';
+import { Container } from '@material-ui/core';
 
 const App: React.FC = (): React.ReactElement => {
-    return (
-        <BrowserRouter>
-            <div>
-                <h1>Привет из компонента App</h1>
-                <NavLink to={'/'}>Главная</NavLink>
-                <NavLink to={'/counter'}>Counter</NavLink>
-            </div>
-            <Route path={'/'} exact>
-                <HomePage/>
-            </Route>
-            <Route path={'/counter'} exact>
-                <CounterPage/>
-            </Route>
-        </BrowserRouter>
-    );
-};
+        return (
+            <BrowserRouter>
+                <Container style={{'paddingTop': 100}}>
+                    <Navbar/>
+                    <Route path={'/'} exact>
+                        <HomePage/>
+                    </Route>
+                    <Route path={'/counter'} exact>
+                        <CounterPage/>
+                    </Route>
+                </Container>
+            </BrowserRouter>
+        );
+    }
+;
 
 export default App;

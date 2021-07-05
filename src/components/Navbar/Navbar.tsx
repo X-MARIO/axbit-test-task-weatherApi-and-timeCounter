@@ -20,6 +20,7 @@ import { useHistory } from 'react-router-dom';
 const menuItems = [
     {text: 'Главная', href: '/'},
     {text: 'Счётчик', href: '/counter'},
+    {text: 'Погода', href: '/weather'},
 ];
 
 const Navbar: React.FC = (): React.ReactElement => {

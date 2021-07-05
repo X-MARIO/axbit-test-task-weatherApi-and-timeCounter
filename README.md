@@ -8,3 +8,14 @@
 Верстка остается на усмотрение исполнителя
 
 Примечание: Для решение данной задачи можно использовать React или Angular, TypeScript или чистый JS
+
+
+# Install dependencies
+```
+npm i redux react-redux redux-thunk axios redux-devtools-extension react-router-dom @material-ui/core @material-ui/icons
+```
+
+# Install - D dependencies
+```
+npm i -D @types/react-redux @types/react-router-dom node-sass
+```

@@ -5,7 +5,7 @@ import Search from '../components/Search/Search';
 import Weather from '../components/Weather/Weather';
 import Alert from '../components/Alert/Alert';
 
-import {Container, Typography} from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
 
 
 const WeatherPage: React.FC = (): React.ReactElement => {

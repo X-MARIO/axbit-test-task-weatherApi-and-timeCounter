@@ -5,19 +5,33 @@ import Search from '../components/Search/Search';
 import Weather from '../components/Weather/Weather';
 import Alert from '../components/Alert/Alert';
 
+import {Container, Typography} from '@material-ui/core';
+
+
 const WeatherPage: React.FC = (): React.ReactElement => {
     const {data, loading, error} = useTypedSelector(state => state.weather);
     const {message} = useTypedSelector(state => state.alert);
     const {setError, setAlert} = useActions();
 
     return (
-        <div>
+        <Container fixed>
             <Search title={'Enter city name and press search button'}/>
-            {loading ? <h2>Loading...</h2> : data && <Weather data={data}/>}
+            {
+                loading && <Typography component={'h1'} variant={'h3'}>Идет загрузка...</Typography>
+            }
 
-            {message && <Alert message={message} onClose={() => setAlert('')}/>}
-            {error && <Alert message={error} onClose={() => setError()}/>}
-        </div>
+            {
+                data && <Weather data={data}/>
+            }
+
+            {
+                message && <Alert message={message} onClose={() => setAlert('')}/>
+            }
+
+            {
+                error && <Alert message={error} onClose={() => setError()}/>
+            }
+        </Container>
     );
 };
 

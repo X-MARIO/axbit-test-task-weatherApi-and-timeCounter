@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
+import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from '@material-ui/core';
 
 interface AlertProps {
     message: string;
@@ -7,18 +7,17 @@ interface AlertProps {
 }
 
 const Alert: React.FC<AlertProps> = ({message, onClose}): React.ReactElement => {
+    const open = message ? true : false;
     return (
-        <div>
-            <div onClick={onClose}></div>
-            <div>
-                <header>
-                    <p>{message}</p>
-                </header>
-                <footer>
-                    <Button onClick={onClose}>Close</Button>
-                </footer>
-            </div>
-        </div>
+        <Dialog open={open} aria-labelledby={'form-dialog-title'}>
+            <DialogTitle id={'dialog'} color={'error'}>Внимание!</DialogTitle>
+            <DialogContent>
+                <DialogContentText>{message}</DialogContentText>
+                <DialogActions>
+                    <Button color={'secondary'} onClick={onClose}>Close</Button>
+                </DialogActions>
+            </DialogContent>
+        </Dialog>
     );
 };
 

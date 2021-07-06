@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
-import { Button, Input } from '@material-ui/core';
-import { useActions } from '../../hooks/useActions';
+import React, {useState} from 'react';
+import {Button, Input, Typography} from '@material-ui/core';
+import {useActions} from '../../hooks/useActions';
+
+import {makeStyles} from '@material-ui/core/styles';
+import {Container} from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+    input: {
+        marginRight: theme.spacing(2)
+    }
+}));
 
 interface SearchProps {
     title: string,
 }
 
 const Search: React.FC<SearchProps> = ({title}): React.ReactElement => {
+    const classes = useStyles();
     const [city, setCity] = useState<string>('');
     const {setAlert, getWeather, setLoading} = useActions();
 
@@ -27,24 +37,19 @@ const Search: React.FC<SearchProps> = ({title}): React.ReactElement => {
     };
 
     return (
-        <div>
-            <div>
-                <div className="container">
-                    <h1 className="title">{title}</h1>
-                    <form onSubmit={submitHandler}>
-                        <Input
-                            type="text"
-                            className={''}
-                            placeholder={'Enter city name'}
-                            style={{maxWidth: 300}}
-                            value={city}
-                            onChange={changeHandler}
-                        />
-                        <Button style={{maxWidth: 300, margin: '0 auto'}}>Search</Button>
-                    </form>
-                </div>
-            </div>
-        </div>
+        <Container fixed>
+            <Typography component={'h1'} variant={'h4'} gutterBottom>{title}</Typography>
+            <form onSubmit={submitHandler}>
+                <Input
+                    type="search"
+                    placeholder={'Enter city name'}
+                    value={city}
+                    className={classes.input}
+                    onChange={changeHandler}
+                />
+                <Button type={'submit'} variant="contained" color={'secondary'}>Search</Button>
+            </form>
+        </Container>
     );
 };
 

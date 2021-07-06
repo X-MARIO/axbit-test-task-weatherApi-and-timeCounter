@@ -13,14 +13,16 @@ import {
 
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import WbSunnyTwoToneIcon from '@material-ui/icons/WbSunnyTwoTone';
+import HomeTwoToneIcon from '@material-ui/icons/HomeTwoTone';
+import HourglassFullTwoToneIcon from '@material-ui/icons/HourglassFullTwoTone';
+
 import { useHistory } from 'react-router-dom';
 
 const menuItems = [
-    {text: 'Главная', href: '/'},
-    {text: 'Счётчик', href: '/counter'},
-    {text: 'Погода', href: '/weather'},
+    {text: 'Главная', href: '/', component: <HomeTwoToneIcon/>},
+    {text: 'Счётчик', href: '/counter', component: <HourglassFullTwoToneIcon/>},
+    {text: 'Погода', href: '/weather', component: <WbSunnyTwoToneIcon/>},
 ];
 
 const Navbar: React.FC = (): React.ReactElement => {
@@ -51,7 +53,7 @@ const Navbar: React.FC = (): React.ReactElement => {
                         <MenuIcon/>
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Persistent drawer
+                        Навигационное меню
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -66,10 +68,10 @@ const Navbar: React.FC = (): React.ReactElement => {
                     </IconButton>
                 </div>
                 <List>
-                    {menuItems.map(({text, href}, index) => (
+                    {menuItems.map(({text, href, component}, index) => (
                         <ListItem button key={href} onClick={() => history.push(href)}>
                             <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}
+                                {component}
                             </ListItemIcon>
                             <ListItemText primary={text}/>
                         </ListItem>

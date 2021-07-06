@@ -8,13 +8,16 @@ import {useActions} from '../../hooks/useActions';
 
 const Counter: React.FC = (): React.ReactElement => {
     const {count} = useTypedSelector(state => state.counter);
-    const {asyncIncrement, increment, decrement} = useActions();
+    const {asyncIncrement, increment, decrement, setTime} = useActions();
     return (
         <Container fixed>
             <Typography align={'center'} component={'p'} variant={'h3'} gutterBottom>{count}</Typography>
             <Grid container spacing={4} justify={'center'}>
                 <Grid item>
-                    <Button variant="contained" color="primary" onClick={() => increment()}>+</Button>
+                    <Button variant="contained" color="primary" onClick={() => {
+                        increment();
+                        setTime();
+                    }}>+</Button>
                 </Grid>
                 <Grid item>
                     <Button variant="contained" color="secondary" onClick={() => decrement()}>-</Button>

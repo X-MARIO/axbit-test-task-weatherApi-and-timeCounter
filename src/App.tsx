@@ -6,6 +6,7 @@ import CounterPage from './pages/CounterPage';
 import Navbar from './components/Navbar/Navbar';
 import { Container } from '@material-ui/core';
 import WeatherPage from './pages/WeatherPage';
+import Time from './components/Time/Time';
 
 const App: React.FC = (): React.ReactElement => {
         return (
@@ -17,6 +18,7 @@ const App: React.FC = (): React.ReactElement => {
                     </Route>
                     <Route path={'/counter'} exact>
                         <CounterPage/>
+                        <Time/>
                     </Route>
                     <Route path={'/weather'} exact>
                         <WeatherPage/>

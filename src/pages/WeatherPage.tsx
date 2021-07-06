@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTypedSelector } from '../hooks/useTypedSelector';
 import { useActions } from '../hooks/useActions';
 import Search from '../components/Search/Search';
@@ -11,7 +11,11 @@ import { Container, Typography } from '@material-ui/core';
 const WeatherPage: React.FC = (): React.ReactElement => {
     const {data, loading, error} = useTypedSelector(state => state.weather);
     const {message} = useTypedSelector(state => state.alert);
-    const {setError, setAlert} = useActions();
+    const {setError, setAlert, getWeather} = useActions();
+
+    useEffect(() => {
+        getWeather('samara');
+    }, [])
 
     return (
         <Container fixed>

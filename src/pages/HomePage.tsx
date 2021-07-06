@@ -26,7 +26,7 @@ const HomePage: React.FC = (): React.ReactElement => {
                 <Typography
                     variant={'h5'}
                     component={'h1'}
-                    color={'inherit'}
+                    color={'secondary'}
                     align={'center'}>Приложение прогноза погоды</Typography>
             </Container>
         </Paper>
